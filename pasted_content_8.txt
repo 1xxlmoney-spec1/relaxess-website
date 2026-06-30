@@ -1,0 +1,209 @@
+AUDIO SYSTEM — STEP 3: AUDIO DECISION LAYER (IDEAL ARCHITECTURE)
+
+This is a STRICT system component.
+
+It defines WHAT audio should be played and RESOLVES it into S3 URLs.
+
+ABSOLUTE RULE:
+This layer NEVER plays audio directly.
+
+It ONLY produces structured playback commands for AudioManager (Step 2).
+
+---
+
+# 🚨 STRICT ISOLATION RULE
+
+This layer MUST NOT:
+- modify UI
+- control AudioManager directly
+- apply business limits (Step 4 responsibility)
+- store persistent playback state
+- create new audio systems
+
+---
+
+# 🧠 CORE ROLE
+
+This layer is responsible for:
+
+1. Deciding WHICH audio should play
+2. Resolving track names into S3 URLs
+3. Outputting a final executable command to AudioManager
+
+---
+
+# 🟧 INPUT SIGNALS
+
+This layer receives:
+
+- chat session state (active / inactive)
+- theme (light / dark)
+- soundscape selection (manual / none)
+- audio toggle (ON / OFF)
+- user action events (chat update, soundscape selection)
+- subscription status (free / premium — ONLY for tagging, not blocking)
+
+---
+
+# 🧱 AUDIO SOURCE OF TRUTH (S3 REGISTRY)
+
+ALL audio MUST be resolved using ONLY these URLs:
+
+Calm Oceanic Tide  
+https://calmspace-audio.s3.us-east-1.amazonaws.com/calm-oceanic-tide.mp3
+
+Summer Night  
+https://calmspace-audio.s3.us-east-1.amazonaws.com/summer-night.mp3
+
+Gentle Breathing  
+https://calmspace-audio.s3.us-east-1.amazonaws.com/gentle-breathing.mp3
+
+Rain After Midnight  
+https://calmspace-audio.s3.us-east-1.amazonaws.com/rain-after-midnight.mp3
+
+Whispering Forest  
+https://calmspace-audio.s3.us-east-1.amazonaws.com/whispering-forest.mp3
+
+Velvet Evening  
+https://calmspace-audio.s3.us-east-1.amazonaws.com/velvet-evening.mp3
+
+Blue Silence  
+https://calmspace-audio.s3.us-east-1.amazonaws.com/blue-silence.mp3
+
+Slow City Lights  
+https://calmspace-audio.s3.us-east-1.amazonaws.com/slow-city-lights.mp3
+
+Cozy Fireplace  
+https://calmspace-audio.s3.us-east-1.amazonaws.com/cozy-fireplace.mp3
+
+My Own Place  
+https://calmspace-audio.s3.us-east-1.amazonaws.com/my-own-place.mp3
+
+Gentle Purring  
+https://calmspace-audio.s3.us-east-1.amazonaws.com/gentle-purring.mp3
+
+---
+
+# 🔥 PRIORITY SYSTEM (CRITICAL)
+
+At any moment ONLY ONE rule applies:
+
+---
+
+## 🥇 PRIORITY 1 — MANUAL SOUNDSCAPE (HIGHEST)
+
+If user selects a soundscape manually:
+
+→ ALWAYS override chat audio  
+→ ALWAYS stop current playback  
+→ ALWAYS switch to selected track  
+
+Example mapping:
+- Rain Scene → Rain After Midnight
+- Fireplace Scene → Cozy Fireplace
+- Cat Scene → Gentle Purring
+
+---
+
+## 🥈 PRIORITY 2 — CHAT SESSION AUDIO (AUTO MODE)
+
+Only applies if:
+- user is in chat
+- no manual soundscape is active
+- audio toggle is ON
+
+Theme mapping:
+
+Light Theme → Calm Oceanic Tide  
+Dark Theme → Summer Night  
+
+---
+
+## 🥉 PRIORITY 3 — NO AUDIO STATE
+
+If:
+- audio is OFF
+- OR no valid playback condition exists
+
+→ STOP audio immediately
+
+---
+
+# ⚙️ DECISION ALGORITHM (MANDATORY FLOW)
+
+On ANY state change:
+
+1. Detect event trigger
+2. Evaluate priority rules (1 → 2 → 3)
+3. Select EXACT ONE track OR null
+4. Resolve track name → S3 URL
+5. Compare with current AudioManager state
+6. If different:
+   → send switch/play command
+7. If same:
+   → do nothing
+
+---
+
+# 🎯 OUTPUT FORMAT (STRICT CONTRACT)
+
+This layer MUST output ONLY:
+
+## Case 1 — Play / Switch
+
+AudioManager.switch("<S3_URL>")
+
+OR
+
+AudioManager.play("<S3_URL>")
+
+---
+
+## Case 2 — Stop
+
+AudioManager.stop()
+
+---
+
+## Case 3 — No Action
+
+NO OUTPUT
+
+---
+
+# 🚫 STRICT PROHIBITIONS
+
+This layer MUST NEVER:
+
+- output track names without S3 resolution
+- call AudioManager with anything other than URL
+- apply limits or blocking rules (Step 4 only)
+- store playback history
+- manage timers or counters
+
+---
+
+# 🧠 SINGLE SOURCE OF TRUTH RULE
+
+This layer is the ONLY system that:
+
+- knows mapping between emotion/theme → track
+- knows S3 URLs
+- decides playback outcome
+
+BUT:
+- does NOT enforce restrictions
+- does NOT execute playback
+
+---
+
+# 🔥 FINAL GUARANTEE
+
+If implemented correctly:
+
+- no ambiguous track selection
+- no missing URLs
+- no duplicate playback logic
+- fully deterministic audio behavior
+
+END OF SPEC

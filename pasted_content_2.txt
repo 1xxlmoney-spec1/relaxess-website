@@ -1,0 +1,342 @@
+CALMSPACE PREMIUM UI PASS
+
+DO NOT change app functionality.
+
+DO NOT move elements.
+
+DO NOT redesign navigation structure.
+
+Only upgrade visual quality.
+
+The entire UI should feel inspired by:
+
+* Apple Vision Pro
+* Apple Mindfulness
+* Apple Journal
+* Apple Weather
+
+Keywords:
+
+calm
+premium
+atmospheric
+minimal
+soft depth
+glass
+quiet luxury
+
+==================================================
+
+1. MENU CARDS
+   ==================================================
+
+Applies to:
+
+* Relaxation Tools
+* Sleep Mode
+* Grounding Exercise
+* Quiet Mind
+* Any future menu cards
+
+Replace flat cards with premium floating cards.
+
+Card style:
+
+backgroundColor:
+rgba(255,255,255,0.08)
+
+borderWidth:
+1
+
+borderColor:
+rgba(255,255,255,0.12)
+
+borderRadius:
+28
+
+padding:
+22
+
+Add soft depth:
+
+shadowColor:
+#7FDFFF
+
+shadowOpacity:
+0.12
+
+shadowRadius:
+16
+
+shadowOffset:
+{
+width: 0,
+height: 6
+}
+
+Add subtle internal highlight:
+
+position absolute
+top 0
+
+height:
+40
+
+background:
+rgba(255,255,255,0.05)
+
+borderTopLeftRadius:
+28
+
+borderTopRightRadius:
+28
+
+Cards should feel softly illuminated.
+
+NOT glowing.
+
+NOT neon.
+
+==================================================
+2. CARD TEXT
+============
+
+Title:
+
+color:
+#F5F4F0
+
+fontWeight:
+600
+
+fontSize:
+20
+
+Description:
+
+color:
+rgba(255,255,255,0.65)
+
+fontSize:
+14
+
+lineHeight:
+20
+
+==================================================
+3. PREMIUM CARD INTERACTION
+===========================
+
+When pressed:
+
+scale:
+1 → 0.98
+
+duration:
+120ms
+
+No bounce.
+
+No wobble.
+
+No dramatic animation.
+
+==================================================
+4. GLOBAL AUDIO BAR
+===================
+
+Current audio bar should become a floating glass player.
+
+Style:
+
+backgroundColor:
+rgba(255,255,255,0.10)
+
+borderWidth:
+1
+
+borderColor:
+rgba(255,255,255,0.14)
+
+borderRadius:
+26
+
+marginHorizontal:
+14
+
+marginBottom:
+12
+
+Add premium depth:
+
+shadowColor:
+#7FDFFF
+
+shadowOpacity:
+0.18
+
+shadowRadius:
+18
+
+shadowOffset:
+{
+width: 0,
+height: 8
+}
+
+Add subtle top reflection:
+
+height:
+18
+
+opacity:
+0.4
+
+background:
+rgba(255,255,255,0.08)
+
+The audio bar should look like floating glass.
+
+==================================================
+5. AUDIO BUTTONS
+================
+
+Play button:
+
+backgroundColor:
+rgba(255,255,255,0.14)
+
+borderRadius:
+999
+
+Icon color:
+
+#F4F4F2
+
+Hover/Press:
+
+opacity:
+0.85
+
+scale:
+0.96
+
+Track title:
+
+#F5F4F0
+
+Secondary text:
+
+rgba(255,255,255,0.65)
+
+==================================================
+6. BOTTOM NAVIGATION BAR
+========================
+
+Applies to:
+
+Home
+Music
+Settings
+
+Turn it into a floating dock.
+
+Style:
+
+backgroundColor:
+rgba(255,255,255,0.08)
+
+borderWidth:
+1
+
+borderColor:
+rgba(255,255,255,0.12)
+
+borderRadius:
+30
+
+marginHorizontal:
+18
+
+marginBottom:
+10
+
+paddingVertical:
+10
+
+Add depth:
+
+shadowColor:
+#7FDFFF
+
+shadowOpacity:
+0.10
+
+shadowRadius:
+14
+
+shadowOffset:
+{
+width: 0,
+height: 5
+}
+
+==================================================
+7. NAVIGATION ICONS
+===================
+
+Inactive:
+
+rgba(255,255,255,0.55)
+
+Active:
+
+#F5F4F0
+
+Active tab:
+
+Add soft glow:
+
+textShadowColor:
+rgba(255,255,255,0.20)
+
+textShadowRadius:
+8
+
+No bright cyan.
+
+No neon.
+
+==================================================
+8. OVERALL FEELING
+==================
+
+The interface should feel like:
+
+a calm evening,
+clean air,
+soft moonlight,
+quiet reflection.
+
+NOT:
+
+cyberpunk
+
+gaming UI
+
+crypto dashboard
+
+AI control panel
+
+The user should feel relaxed before even pressing a button.
+
+Everything must look like one ecosystem:
+
+Background
+CalmSpace logo
+Theme Toggle
+Cards
+Audio Bar
+Bottom Navigation
+
+All elements should feel designed together.

@@ -1,0 +1,189 @@
+AUDIO SYSTEM REBUILD — STEP 4: BUSINESS RULES LAYER (LIMITS & ACCESS CONTROL)
+
+This instruction applies ONLY to the audio system logic layer.
+
+ABSOLUTE SAFETY RULE:
+Do NOT modify, touch, or affect ANY part of the application outside audio-related control decisions.
+
+STRICTLY FORBIDDEN:
+- changing UI structure
+- modifying chat system logic
+- altering navigation
+- modifying AudioManager (Step 2)
+- modifying Decision Layer priority logic (Step 3)
+- creating new audio engines
+
+You are ONLY adding business constraints ABOVE the existing Decision Layer.
+
+---
+
+## CONTEXT
+
+System architecture is already defined:
+
+- Step 2: AudioManager (playback engine only)
+- Step 3: Decision Layer (decides what plays)
+
+NOW:
+You are adding BUSINESS RULES that can restrict or block audio decisions.
+
+IMPORTANT:
+This layer does NOT choose audio tracks.
+It only allows or blocks decisions from Step 3.
+
+---
+
+## ROLE OF THIS LAYER
+
+This layer acts as a "permission gate" between:
+
+Decision Layer → Audio execution
+
+It can:
+- allow audio decision
+- block audio decision
+- modify "allowed state" (not track selection)
+
+---
+
+## INPUTS
+
+This layer can read:
+
+1. Chat Session Activity
+   - number of chat exchanges
+   - session duration
+
+2. Soundscape usage counters
+   - per-day usage tracking
+
+3. Subscription status
+   - free / premium
+
+4. Current audio state (from Decision Layer)
+   - requested track or stop command
+
+---
+
+## OUTPUT
+
+This layer outputs ONLY:
+
+- ALLOW audio action
+- BLOCK audio action
+- MODIFY to STOP
+
+It does NOT call AudioManager directly.
+
+It only validates or rejects Decision Layer output.
+
+---
+
+# 🔥 RULE SETS
+
+---
+
+## RULE 1 — CHAT AUDIO LIMIT (FREE USERS ONLY)
+
+Applies ONLY to Chat Session Audio tracks:
+- Calm Oceanic Tide
+- Summer Night
+
+Free user limits:
+
+- Maximum 10 chat exchanges OR
+- Maximum 30 minutes total audio playback
+
+Whichever happens first.
+
+After limit is reached:
+
+- BLOCK all chat audio playback
+- FORCE STOP audio via Decision Layer instruction
+- Keep chat session active (NO interruption of chat UI)
+
+Show message:
+"Free listening limit reached. You can enjoy more sounds with Premium."
+
+---
+
+## RULE 2 — GENTLE BREATHING LIMIT (FREE USERS ONLY)
+
+Track:
+- Gentle Breathing
+
+Rules:
+
+- Manual playback only
+- Maximum 2 plays per day
+
+After first play:
+→ allow
+→ show: "You have 1 free listening session remaining today."
+
+After second play:
+→ BLOCK playback
+→ show: "Daily free listening limit reached. Please return tomorrow or upgrade to Premium."
+
+---
+
+## RULE 3 — PREMIUM OVERRIDE
+
+If user is PREMIUM:
+
+- IGNORE all limits
+- Allow all soundscapes
+- Allow unlimited chat audio
+- Allow unlimited duration
+
+---
+
+## RULE 4 — SOUNDSCAPE PROTECTION RULE
+
+Manual Soundscapes (Step 3 priority system):
+
+- NEVER block initial activation
+- BUT apply Gentle Breathing daily limit if applicable
+
+All other premium soundscapes:
+- Free users: BLOCK (except Gentle Breathing)
+- Premium users: ALLOW ALL
+
+---
+
+## RULE 5 — AUDIO SAFETY OVERRIDE
+
+If audio state becomes inconsistent:
+
+- ALWAYS send STOP command
+- Reset decision state
+- Prevent overlapping playback
+
+---
+
+## CRITICAL ARCHITECTURE RULE
+
+This layer MUST NEVER:
+
+- decide what track to play
+- override priority logic from Step 3
+- directly control AudioManager
+- duplicate Decision Layer logic
+
+It only validates and restricts.
+
+---
+
+## FINAL FLOW (MANDATORY)
+
+Every audio request MUST pass through:
+
+Step 3 (Decision Layer)
+        ↓
+Step 4 (Business Rules Layer)
+        ↓
+AudioManager (execution)
+
+If Step 4 blocks → no playback happens.
+
+END OF SPEC

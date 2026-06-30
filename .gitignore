@@ -1,0 +1,11 @@
+﻿node_modules/
+.expo/
+dist/
+build/
+.next/
+.env
+*.mp3
+*.wav
+*.zip
+*.tar.gz
+.DS_Store

@@ -1,0 +1,204 @@
+CRITICAL AUDIO FIX
+
+Do not redesign the architecture.
+
+Keep:
+
+AudioContext
+→ AudioManager
+→ expo-audio
+
+Use ONE AudioManager only.
+
+==================================================
+FIX #1 — USE REAL S3 URLS
+=========================
+
+Remove:
+
+getAudioUrl()
+
+Remove:
+
+getApiBaseUrl()
+
+Remove:
+
+/audio/filename.mp3 routing.
+
+Every track must use the direct S3 URL.
+
+Example:
+
+ocean:
+https://calmspace-audio.s3.us-east-1.amazonaws.com/calm-oceanic-tide.mp3
+
+summer-night:
+https://calmspace-audio.s3.us-east-1.amazonaws.com/summer-night.mp3
+
+gentle-breathing:
+https://calmspace-audio.s3.us-east-1.amazonaws.com/gentle-breathing.mp3
+
+(and all remaining tracks)
+
+AudioManager must stream directly from S3.
+
+==================================================
+FIX #2 — SESSION MESSAGE LIMIT
+==============================
+
+Inside SessionScreen:
+
+after every successful user message:
+
+call:
+
+audio.incrementExchangeCount()
+
+Current code never increments the counter.
+
+The 10 message limit therefore never activates.
+
+Fix this.
+
+==================================================
+FIX #3 — AUTO STOP AFTER 10 MESSAGES
+====================================
+
+When:
+
+sessionExchangeCount >= 10
+
+AND
+
+current track is:
+
+ocean
+or
+summer-night
+
+Then:
+
+audio.stop()
+
+Show:
+
+"Free listening limit reached.
+You can enjoy more sounds with Premium."
+
+Chat must continue.
+
+Audio only stops.
+
+==================================================
+FIX #4 — AUTO STOP AFTER 30 MINUTES
+===================================
+
+Current implementation only checks limits during playback start.
+
+This is incorrect.
+
+Create an active timer.
+
+When session audio reaches 30 minutes:
+
+audio.stop()
+
+Show:
+
+"Free listening limit reached.
+You can enjoy more sounds with Premium."
+
+Chat continues.
+
+Audio stops.
+
+==================================================
+FIX #5 — CHAT AUDIO RULES
+=========================
+
+Chat Session may use ONLY:
+
+ocean
+summer-night
+
+No other Soundscape track may play in chat.
+
+Theme Default:
+
+Light Theme
+→ ocean
+
+Dark Theme
+→ summer-night
+
+==================================================
+FIX #6 — AUDIO CONTROLS IN CHAT
+===============================
+
+Add visible controls:
+
+Play
+Pause
+Mute
+
+inside SessionScreen.
+
+Behavior:
+
+Play:
+resume current session track
+
+Pause:
+pause current session track
+
+Mute:
+stop current session track
+
+==================================================
+FIX #7 — GENTLE BREATHING
+=========================
+
+Gentle Breathing is NOT session audio.
+
+Gentle Breathing:
+
+* manual start only
+* Soundscapes only
+* maximum 2 plays per day
+
+Must NOT start session timers.
+
+Must NOT use 10 message limits.
+
+Must NOT use 30 minute limits.
+
+Independent system only.
+
+==================================================
+FIX #8 — THEME CHANGES
+======================
+
+If user is listening to manually selected Soundscape:
+
+DO NOT switch audio when theme changes.
+
+Theme defaults apply ONLY when no manual Soundscape selection exists.
+
+==================================================
+FIX #9 — VERIFY
+===============
+
+After implementation provide:
+
+1. audio-manager.ts
+2. audio-context.tsx
+3. session.tsx
+
+FULL SOURCE CODE.
+
+Do not provide summaries.
+
+Do not provide explanations.
+
+Provide actual code.

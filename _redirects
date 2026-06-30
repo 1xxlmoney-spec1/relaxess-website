@@ -1,0 +1,18 @@
+# Cloudflare Pages redirects configuration
+
+# Redirect HTTP to HTTPS (handled by Cloudflare automatically)
+
+# Clean URL redirects - remove .html extension
+/index.html / 200
+/privacy.html /privacy 200
+/terms.html /terms 200
+/support.html /support 200
+/contact.html /contact 200
+
+# Redirect old URLs if needed
+/privacy-policy /privacy 301
+/terms-of-use /terms 301
+/faq /support 301
+
+# Catch-all for single page app (if needed in future)
+/* /index.html 200

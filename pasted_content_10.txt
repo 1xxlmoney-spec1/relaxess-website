@@ -1,0 +1,187 @@
+AUDIO SYSTEM — FINAL INTEGRATED ARCHITECTURE (MASTER SPEC)
+
+This document defines the COMPLETE audio system architecture.
+
+It combines all previous steps:
+- Step 2: AudioManager (Engine)
+- Step 3: Decision Layer (Brain)
+- Step 4: Business Rules Layer (Gatekeeper)
+- Step 5: Debug Layer (Observer)
+
+---
+
+# 🚨 ABSOLUTE SYSTEM RULE
+
+Under NO circumstances may any layer:
+- merge responsibilities
+- bypass another layer
+- directly control audio outside its role
+- duplicate logic from other layers
+
+Each layer MUST remain strictly isolated.
+
+---
+
+# 🧱 SYSTEM ARCHITECTURE (MANDATORY FLOW)
+
+ALL audio operations MUST follow this pipeline:
+
+Step 3: Decision Layer (WHAT to play)
+        ↓
+Step 4: Business Rules Layer (CAN it play?)
+        ↓
+Step 2: AudioManager (EXECUTE playback)
+        ↓
+Step 5: Debug Layer (OBSERVE and report)
+
+---
+
+# 🔷 STEP 2 — AUDIO MANAGER (ENGINE)
+
+Role:
+- Executes audio only
+
+Allowed:
+- play(track)
+- stop()
+- switch(track)
+
+Rules:
+- only one track at a time
+- no business logic
+- no decisions
+
+---
+
+# 🧠 STEP 3 — DECISION LAYER (BRAIN)
+
+Role:
+- decides WHAT should play
+
+Inputs:
+- chat state
+- soundscape selection
+- theme
+- audio toggle
+- subscription status
+
+Output:
+- play(track) / stop() / switch(track)
+
+Rules:
+- MUST NOT execute audio
+- MUST NOT apply limits
+- MUST NOT block content
+
+---
+
+# 🛑 STEP 4 — BUSINESS RULES LAYER (GATEKEEPER)
+
+Role:
+- validates Decision Layer output
+
+Can:
+- ALLOW
+- BLOCK
+- FORCE STOP
+
+Rules enforced:
+
+1. Chat Audio Limit (Free users)
+- 10 chat exchanges OR 30 minutes
+- applies only to chat audio tracks
+
+2. Gentle Breathing Limit (Free users)
+- max 2 plays per day
+
+3. Premium Override
+- ignores all limits
+
+4. Soundscape rules
+- free users: only Gentle Breathing + chat audio rules apply
+
+IMPORTANT:
+This layer does NOT decide WHAT to play.
+
+---
+
+# 🔍 STEP 5 — DEBUG LAYER (OBSERVER)
+
+Role:
+- READ ONLY diagnostics
+
+Must output:
+- Decision Layer output
+- Business Rules result
+- AudioManager state
+- root cause of failure (if any)
+
+Rules:
+- cannot modify system
+- cannot trigger audio
+- cannot influence flow
+
+---
+
+# 🔥 GLOBAL PRIORITY RULES
+
+1. Soundscape manual selection overrides chat audio
+2. Business Rules can block ANY non-premium playback
+3. AudioManager never decides anything
+4. Decision Layer never plays audio directly
+5. Debug Layer never affects execution
+
+---
+
+# ⚠️ CRITICAL FAILURE PREVENTION RULES
+
+If any of the following occur:
+
+- overlapping audio
+- no audio playback
+- wrong track playing
+- audio stuck state
+
+Then:
+
+1. Check Step 3 output first
+2. Check Step 4 block reasons
+3. Verify Step 2 state consistency
+4. Use Step 5 debug report
+
+---
+
+# 🧠 SINGLE SOURCE OF TRUTH RULE
+
+Each responsibility exists ONLY in one layer:
+
+- Playback execution → Step 2
+- Decision making → Step 3
+- Permissions/limits → Step 4
+- Diagnostics → Step 5
+
+NO EXCEPTIONS.
+
+---
+
+# 🚫 STRICT PROHIBITIONS
+
+System MUST NOT:
+
+- combine Decision + Business logic
+- embed rules inside AudioManager
+- allow UI to control playback directly
+- bypass any step in the pipeline
+
+---
+
+# 🎯 FINAL SYSTEM GUARANTEE
+
+If implemented correctly:
+
+- audio will never overlap
+- system will be predictable
+- debugging will be deterministic
+- each failure will have a clear source layer
+
+END OF SPEC

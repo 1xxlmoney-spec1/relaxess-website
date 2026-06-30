@@ -1,0 +1,455 @@
+APP NAME:
+CalmSpace – AI Companion for Relaxation
+
+---
+
+PROJECT OVERVIEW:
+
+Create a scalable mobile application called “CalmSpace”.
+
+“CalmSpace” is an ultra-minimalist AI-powered application designed for emotional support and relaxation. It is intended for people experiencing stress, anxiety, overthinking, emotional exhaustion, or sleep difficulties.
+
+The application combines:
+
+* AI emotional support chat
+* Calming soundscapes
+* Minimalist UX design
+* An emotionally relaxing experience
+
+The application must be designed with future scalability in mind, allowing new features, audio content, languages, and updates to be added easily without rebuilding the entire system. The architecture should also support future advertising integration.
+
+This is NOT a medical or therapy application.
+It does NOT diagnose or treat mental health conditions.
+
+---
+
+SUPPORTED LANGUAGES (MVP VERSION):
+
+At launch, the application must support 3 languages:
+
+1. English
+2. Spanish
+3. German
+
+English should be the default language on first launch.
+
+The architecture must allow easy future expansion for:
+
+* Japanese
+* French
+* Portuguese
+* and additional languages
+
+The language management system must be modular and scalable.
+
+---
+
+CORE PRODUCT PRINCIPLE:
+
+The app should feel like:
+“A calm emotional space inside the phone.”
+
+Users should feel calmer and more relaxed within the first 30–60 seconds after opening the app.
+
+Avoid complexity.
+Avoid information overload.
+Avoid aggressive visual elements.
+
+The UX design should help emotionally overwhelmed users instantly feel safe and relaxed.
+
+---
+
+UI / UX DESIGN RULES:
+
+* Minimalist Apple-style interface
+* Light and dark screen themes:
+
+  * Light theme: standard white interface
+  * Dark theme: based on the provided image file “Dark” (default theme). When the AI chat is activated, the chat background should smoothly transition into a pixelated version of the same image using the JPG file “Dark Pix”. Both “Dark” and “Dark Pix” are attached files.
+* Maximum simplicity
+* Minimal number of buttons (beautiful and clear)
+* Calm and soft visual style
+* No visual clutter
+* No complicated onboarding process
+
+Users should be able to access the AI chat within 1–2 taps maximum.
+
+---
+
+THEME SYSTEM:
+
+The application must support BOTH modes:
+
+1. Dark Mode (default)
+2. Light Mode
+
+Users must be able to manually switch themes in settings.
+
+---
+
+MAIN USER FLOW:
+
+Open the app →
+Choose emotional state →
+Start session →
+Relaxing audio begins →
+AI chat begins →
+User feels emotionally supported
+
+---
+
+HOME SCREEN:
+
+Main title:
+“How are you feeling today?”
+
+Mood buttons:
+
+* Anxiety
+* Stress
+* Overthinking
+* Sleep Problems
+* Sadness
+* Just Relax
+
+Main button:
+“Start Session”
+
+Small sound toggle icon:
+ON / OFF
+
+Theme switch option:
+Dark / Light
+
+---
+
+SESSION SCREEN (CORE FEATURE):
+
+Main elements:
+
+* AI chat interface
+* Minimalist messenger-style design
+* User input field at the bottom
+* Calm animated background
+
+AI behavior:
+
+* Emotional support
+* Calm communication
+* Short responses only
+* Gentle questions
+* No medical terminology
+* No diagnoses
+* No long paragraphs
+
+Example tone:
+
+* “I’m here with you.”
+* “Let’s slow down together.”
+* “There’s no need to rush.”
+* “We can take this step by step.”
+
+---
+
+AUDIO SYSTEM (VERY IMPORTANT):
+
+Audio is a key emotional feature of the product. In the MVP version, all audio files must be stored locally within the application package for simplicity and lower infrastructure costs.
+
+Attached audio files:
+
+* RelaxM1 (free version audio)
+* RelaxM2 (premium version audio)
+* Rain (premium version audio)
+* Forest (premium version audio)
+
+The architecture should allow future migration to cloud-based audio storage if needed.
+
+---
+
+FREE AUDIO VERSION:
+
+Free users receive:
+
+* 1 built-in calming music track (RelaxM1)
+* Continuous seamless looping playback during chat
+* 10 AI messages per day per user
+* Unlimited daily users
+
+The free audio must:
+
+* create a relaxing atmosphere
+* feel soft and emotionally calming
+* loop endlessly without interruption during active sessions
+* stop only when the user manually disables sound
+
+---
+
+PREMIUM AUDIO VERSION:
+
+Premium subscribers unlock 3 audio categories:
+
+1. Relaxing Music (RelaxM2)
+
+* Multiple smooth relaxing music tracks
+
+2. Forest Sounds (Forest)
+
+* Birds
+* Soft wind
+* Calm forest atmosphere
+
+3. Rain Sounds (Rain)
+
+* Gentle rain
+* Relaxing rain ambience
+
+Each audio category contains approximately 15 minutes of audio content.
+
+All premium audio categories must:
+
+* support seamless infinite looping playback
+* continue playing during AI chat sessions
+* stop only when the user manually disables sound
+
+---
+
+PREMIUM AUDIO INTERFACE:
+
+When the “Audio” button is activated in Premium mode,
+the following selection buttons should appear:
+
+* Music
+* Forest Sounds
+* Rain Sounds
+
+Only one audio category can play at a time.
+
+Switching between audio categories should use smooth fade-in and fade-out transitions.
+
+---
+
+RELAXATION TOOLS SCREEN:
+
+Includes:
+
+* Breathing Exercise (4-4-6)
+* Sleep Mode
+* Grounding Exercise
+* Quiet Relaxation Mode
+
+---
+
+DETAILED RELAXATION TOOLS LOGIC:
+
+1. Breathing Exercise (4-4-6)
+   (Available in both free and premium versions)
+
+Purpose:
+Help users quickly calm anxiety and reduce emotional stress.
+
+User flow:
+
+* User taps “Breathing Exercise”
+* A calm breathing screen opens
+* A softly animated breathing circle appears
+
+Breathing cycle:
+
+* Slow inhale for 4 seconds
+* Hold breath for 4 seconds
+* Slow exhale for 6 seconds
+
+Visual guidance:
+
+* Circle slowly expands during inhale
+* Circle pauses during breath hold
+* Circle slowly contracts during exhale
+
+Example text prompts:
+
+* “Slowly breathe in...”
+* “Gently hold your breath...”
+* “Slowly breathe out...”
+
+Background:
+
+* calming music continues playing
+* minimalist interface
+* no distracting elements
+
+Recommended session duration:
+At least 30–60 seconds.
+
+---
+
+2. Sleep Mode
+   (Premium only)
+
+Purpose:
+Help users emotionally relax before sleep.
+
+Flow:
+
+* User taps “Sleep Mode”
+* Interface becomes dimmer and softer
+* AI responses become slower and calmer
+* Relaxing audio starts automatically
+
+AI communication tone:
+
+* extremely gentle
+* emotionally calming
+* short responses only
+
+Example phrases:
+
+* “You don’t need to force sleep.”
+* “Just allow yourself to rest.”
+* “It’s okay to slow down.”
+
+Visual style:
+
+* reduced brightness
+* smooth animations
+* no stimulating visual elements
+
+---
+
+3. Grounding Exercise
+   (Premium only)
+
+Purpose:
+Help users manage intrusive thoughts and emotional overload.
+
+Flow:
+
+* User taps “Grounding Exercise”
+* AI guides the user through a simplified 5-senses grounding technique
+
+Sequence:
+
+* Name 5 things you can see
+* Name 4 things you can touch
+* Name 3 things you can hear
+* Name 2 things you can smell
+* Name 1 emotion you currently feel
+
+AI tone:
+
+* calm
+* patient
+* non-medical
+* supportive
+
+This feature should feel simple and emotionally safe.
+
+---
+
+4. Quiet Relaxation Mode
+   (Premium only)
+
+Purpose:
+Allow emotionally exhausted users to relax without needing conversation.
+
+Flow:
+
+* User taps “Quiet Mode”
+* AI chat becomes inactive
+* Only calming audio and relaxing visuals remain active
+
+Features:
+
+* looped relaxing music
+* rain or forest sounds
+* smooth calming background animation
+
+No notifications.
+No chat prompts.
+No interruptions.
+
+Users should feel safe, calm, and emotionally protected.
+
+---
+
+MONETIZATION MODEL:
+
+FREE VERSION:
+
+* 10 AI messages per day
+* One looped relaxing music track (RelaxM1)
+
+PREMIUM VERSION:
+
+* Unlimited AI conversations
+* Full access to the audio system:
+
+  * RelaxM2
+  * Rain
+  * Forest
+* All audio categories
+* Deep relaxation sessions
+* Sleep-focused support mode
+
+PRICING:
+
+* Trial offer: $2.99 for the first week
+* Then: $4.99 per month
+* Annual plan: $39.99 per year
+
+---
+
+AI INTEGRATION:
+
+Use a cost-efficient AI architecture.
+
+Requirements:
+
+* Short responses only
+* Context memory limited to the last 5–10 messages
+* Token usage optimization
+* Lightweight AI model preferred
+* Low infrastructure costs
+
+---
+
+PERFORMANCE REQUIREMENTS:
+
+* Fast loading
+* Lightweight application
+* Minimal backend complexity
+* Android-first optimization
+* Scalable architecture for future iOS release
+* Modular structure for future expansion
+
+The app must be easy to update and expand later.
+
+---
+
+COMPLIANCE & SAFETY:
+
+The application must NOT:
+
+* Diagnose mental health conditions
+* Provide medical advice
+* Claim to cure anxiety or depression
+
+Always display the disclaimer:
+“This app provides emotional support and relaxation and is not a medical service.”
+
+---
+
+VISUAL STYLE:
+
+* Emotionally calming
+* Soft gradients
+* Rounded UI elements
+* Meditation-inspired aesthetics
+* Minimalist premium style
+* No visual overload
+* No aggressive colors
+
+---
+
+FINAL PRODUCT GOAL:
+
+Create a simple, emotionally safe AI-powered relaxation companion that helps users feel calmer, emotionally supported, and mentally lighter through gentle conversation and soothing sound environments.

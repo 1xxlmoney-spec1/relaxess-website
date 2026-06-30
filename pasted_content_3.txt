@@ -1,0 +1,189 @@
+CALMSPACE – FREE AUDIO SYSTEM (PHASE 1)
+
+Please implement the Free Audio System architecture for CalmSpace.
+
+IMPORTANT:
+Do not modify the existing Premium architecture.
+This task only concerns the Free version and the three bundled audio tracks stored directly inside the application.
+
+---
+
+## LOCAL AUDIO FILES (BUNDLED INSIDE APP)
+
+The following audio tracks will be stored locally inside the application package:
+
+1. Ocean
+2. Summer Night
+3. Gentle Breathing
+
+These tracks should work without cloud access.
+
+---
+
+## DEFAULT BEHAVIOR
+
+When the user enters a chat session:
+
+LIGHT THEME:
+
+* Default sound = Ocean
+
+DARK THEME:
+
+* Default sound = Summer Night
+
+The selected default sound should start only if audio is enabled.
+
+---
+
+## MASTER AUDIO SWITCH
+
+Main screen already contains a Sound toggle.
+
+Default state:
+
+Audio = OFF
+
+If Audio is OFF:
+
+* No background audio starts.
+* No session audio starts.
+
+If Audio is ON:
+
+* Theme-based default audio becomes available.
+* Audio can continue into the chat session.
+
+The user's audio preference should persist while the app remains open.
+
+---
+
+## CHAT SESSION AUDIO
+
+If audio is enabled:
+
+Light Theme:
+
+* Ocean plays
+
+Dark Theme:
+
+* Summer Night plays
+
+Inside the chat session:
+
+Provide audio controls:
+
+* Play
+* Pause
+* Stop / Mute
+
+The user must be able to disable audio at any moment.
+
+If audio is disabled during a session:
+
+* Sound stops immediately.
+* Chat remains active.
+
+---
+
+## FREE VERSION LIMITS
+
+Background sounds:
+
+Ocean
+Summer Night
+
+Maximum usage:
+
+WHICHEVER HAPPENS FIRST:
+
+A)
+10 chat exchanges completed
+
+OR
+
+B)
+30 minutes reached
+
+After either limit:
+
+* Audio stops automatically.
+* Session remains active.
+
+Show message:
+
+"Free listening limit reached.
+You can enjoy more sounds with Premium."
+
+---
+
+## GENTLE BREATHING TRACK
+
+Gentle Breathing is a separate soundscape.
+
+Rules:
+
+* User may play it manually from Soundscapes.
+* Maximum 2 plays per day.
+* User must manually start each play.
+* No automatic replay.
+
+After first play:
+
+Display:
+
+"You have 1 free listening session remaining today."
+
+After second play:
+
+Display:
+
+"Daily free listening limit reached.
+Please return tomorrow or upgrade to Premium."
+
+---
+
+## SOUNDSCAPES SCREEN
+
+FREE TRACKS:
+
+* Gentle Breathing
+* Ocean
+* Summer Night
+
+PREMIUM TRACKS:
+
+* Rain After Midnight
+* Whispering Forest
+* Velvet Evening
+* Blue Silence
+* Slow City Lights
+* Cozy Fireplace
+* My Own Place
+* Gentle Purring
+
+Premium tracks should remain visible but locked.
+
+---
+
+## FUTURE COMPATIBILITY
+
+Build the audio architecture using a central Audio Manager service.
+
+Future cloud-based tracks must be attachable without redesigning the app.
+
+Requirements:
+
+* Only one audio track may play at a time.
+* Starting a new track automatically stops the previous track.
+* Session audio and Soundscapes audio must never overlap.
+* Future cloud tracks should use the same playback controller.
+
+---
+
+## USER EXPERIENCE GOAL
+
+The free version should provide a calm and complete experience while clearly demonstrating the value of Premium without feeling restrictive or frustrating.
+
+"Only one audio source can exist in the entire app at any moment."

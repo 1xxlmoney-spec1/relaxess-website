@@ -1,0 +1,51 @@
+{
+  "audioProvider": "s3",
+  "comment": "Change 'audioProvider' to 'firebase' when switching to Firebase Storage. No code changes needed!",
+  "tracks": {
+    "relaxm1": {
+      "name": "Relaxing Music",
+      "category": "music",
+      "isPremium": false,
+      "s3Url": "https://calmspace-audio.s3.amazonaws.com/relaxm1.mp3",
+      "firebaseUrl": "gs://your-project.appspot.com/audio/relaxm1.mp3",
+      "duration": 900000,
+      "size": 7340032,
+      "description": "Calming instrumental music for relaxation"
+    },
+    "relaxm2": {
+      "name": "Relaxing Music (Premium)",
+      "category": "music",
+      "isPremium": true,
+      "s3Url": "https://calmspace-audio.s3.amazonaws.com/relaxm2.mp3",
+      "firebaseUrl": "gs://your-project.appspot.com/audio/relaxm2.mp3",
+      "duration": 900000,
+      "size": 14680064,
+      "description": "Premium calming instrumental music"
+    },
+    "forest": {
+      "name": "Forest Sounds",
+      "category": "forest",
+      "isPremium": true,
+      "s3Url": "https://calmspace-audio.s3.amazonaws.com/forest.mp3",
+      "firebaseUrl": "gs://your-project.appspot.com/audio/forest.mp3",
+      "duration": 900000,
+      "size": 16711680,
+      "description": "Ambient forest sounds and bird chirping"
+    },
+    "rain": {
+      "name": "Rain Sounds",
+      "category": "rain",
+      "isPremium": true,
+      "s3Url": "https://calmspace-audio.s3.amazonaws.com/rain.mp3",
+      "firebaseUrl": "gs://your-project.appspot.com/audio/rain.mp3",
+      "duration": 900000,
+      "size": 16711680,
+      "description": "Soothing rain and thunder ambience"
+    }
+  },
+  "instructions": {
+    "updateS3Urls": "1. Upload new MP3 to your S3 bucket\n2. Copy the S3 URL below\n3. Replace the 's3Url' value\n4. Save this file\n5. Restart the app",
+    "updateFirebaseUrls": "1. Upload new MP3 to Firebase Storage\n2. Copy the Firebase URL below\n3. Replace the 'firebaseUrl' value\n4. Save this file\n5. Restart the app",
+    "switchProviders": "Change 'audioProvider' from 's3' to 'firebase' (or vice versa) to switch storage backends"
+  }
+}

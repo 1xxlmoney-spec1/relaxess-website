@@ -1,0 +1,264 @@
+FINAL AUDIO ARCHITECTURE UPDATE
+
+This is the final audio behavior specification.
+
+Do not redesign the audio architecture.
+Do not create additional audio systems.
+
+Continue using the existing single AudioManager architecture.
+
+CORE RULE
+Only ONE audio track may play at any moment.
+
+Starting any new track must automatically stop the currently playing track.
+
+No overlapping audio is allowed anywhere in the application.
+
+CHAT SESSION AUDIO
+Chat Session Audio exists only to provide a calm background atmosphere during AI conversations.
+
+Only two tracks may ever be used inside chat sessions:
+
+Light Theme:
+→ Calm Oceanic Tide
+
+Dark Theme:
+→ Summer Night
+
+No other tracks may be used inside chat sessions.
+
+No Soundscape selection UI should exist inside chat sessions.
+
+The user may only:
+
+Enable Audio
+
+Disable Audio
+
+Audio is OFF by default when the application launches.
+
+If Audio is OFF:
+
+No audio plays.
+
+If Audio is ON:
+
+Light Theme automatically uses Calm Oceanic Tide.
+
+Dark Theme automatically uses Summer Night.
+
+FREE CHAT SESSION LIMITS
+These limits apply ONLY to Chat Session Audio.
+
+Tracks affected:
+
+Calm Oceanic Tide
+
+Summer Night
+
+Limit:
+
+10 chat exchanges
+OR
+
+30 minutes
+
+Whichever happens first.
+
+After limit is reached:
+
+Stop audio immediately.
+
+Keep chat session active.
+
+Display:
+
+"Free listening limit reached.
+You can enjoy more sounds with Premium."
+
+IMPORTANT:
+
+These tracks are NOT freely available for unlimited listening.
+
+Their free usage is restricted to chat sessions only.
+
+FREE SOUNDSCAPES
+Free users have access to ONLY ONE Soundscape:
+
+Gentle Breathing
+
+No other Soundscape track is available for free.
+
+GENTLE BREATHING RULES
+Gentle Breathing is NOT session audio.
+
+Gentle Breathing is available only from the Soundscapes screen.
+
+Rules:
+
+Manual start only
+
+No automatic playback
+
+No automatic replay
+
+Maximum 2 plays per day
+
+After first play:
+
+"You have 1 free listening session remaining today."
+
+After second play:
+
+"Daily free listening limit reached.
+Please return tomorrow or upgrade to Premium."
+
+Gentle Breathing must NOT use:
+
+10 chat exchange limits
+
+30 minute limits
+
+It uses its own independent daily limit system.
+
+PREMIUM SOUNDSCAPES
+Premium users unlock unlimited access to all Soundscape tracks:
+
+Calm Oceanic Tide
+
+Summer Night
+
+Gentle Breathing
+
+Rain After Midnight
+
+Whispering Forest
+
+Velvet Evening
+
+Blue Silence
+
+Slow City Lights
+
+Cozy Fireplace
+
+My Own Place
+
+Gentle Purring
+
+Premium users may listen without time limits.
+
+S3 AUDIO URLS
+Calm Oceanic Tide
+https://calmspace-audio.s3.us-east-1.amazonaws.com/calm-oceanic-tide.mp3
+
+Summer Night
+https://calmspace-audio.s3.us-east-1.amazonaws.com/summer-night.mp3
+
+Gentle Breathing
+https://calmspace-audio.s3.us-east-1.amazonaws.com/gentle-breathing.mp3
+
+Rain After Midnight
+https://calmspace-audio.s3.us-east-1.amazonaws.com/rain-after-midnight.mp3
+
+Whispering Forest
+https://calmspace-audio.s3.us-east-1.amazonaws.com/whispering-forest.mp3
+
+Velvet Evening
+https://calmspace-audio.s3.us-east-1.amazonaws.com/velvet-evening.mp3
+
+Blue Silence
+https://calmspace-audio.s3.us-east-1.amazonaws.com/blue-silence.mp3
+
+Slow City Lights
+https://calmspace-audio.s3.us-east-1.amazonaws.com/slow-city-lights.mp3
+
+Cozy Fireplace
+https://calmspace-audio.s3.us-east-1.amazonaws.com/cozy-fireplace.mp3
+
+My Own Place
+https://calmspace-audio.s3.us-east-1.amazonaws.com/my-own-place.mp3
+
+Gentle Purring
+https://calmspace-audio.s3.us-east-1.amazonaws.com/gentle-purring.mp3
+
+SOUNDSCAPES SCREEN
+Free User:
+
+Unlocked:
+
+Gentle Breathing
+
+Locked:
+
+Calm Oceanic Tide
+
+Summer Night
+
+Rain After Midnight
+
+Whispering Forest
+
+Velvet Evening
+
+Blue Silence
+
+Slow City Lights
+
+Cozy Fireplace
+
+My Own Place
+
+Gentle Purring
+
+Premium User:
+
+All Soundscapes unlocked.
+
+THEME RULE
+Theme selection affects ONLY Chat Session Audio.
+
+Light Theme:
+→ Calm Oceanic Tide
+
+Dark Theme:
+→ Summer Night
+
+Theme changes must never affect manually selected Soundscapes.
+
+VISUALIZATION COMPATIBILITY
+Prepare AudioManager for future visualization scenes.
+
+Examples:
+
+Ocean Scene
+→ Calm Oceanic Tide
+
+Fireplace Scene
+→ Cozy Fireplace
+
+Cat Scene
+→ Gentle Purring
+
+Rain Scene
+→ Rain After Midnight
+
+The same AudioManager must be used.
+
+FINAL REQUIREMENT
+Chat Sessions:
+
+Ocean or Summer Night only.
+
+Free Soundscapes:
+
+Gentle Breathing only.
+
+Premium Soundscapes:
+
+All tracks unlocked.
+
+One AudioManager.
+One active track.
+No overlapping playback.
+No additional audio systems.
