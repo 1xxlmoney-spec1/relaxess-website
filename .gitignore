@@ -6,6 +6,8 @@ build/
 .env
 *.mp3
 *.wav
+*.mp4
 *.zip
 *.tar.gz
+*.md
 .DS_Store
